@@ -416,7 +416,7 @@ function serverchan() {
     # serverchan旧版通知消息: sckey@************
     echo ${all_parameter[*]} | grep -qE "sckey@[a-zA-Z0-9:_-]+" && sckey="$(echo ${all_parameter[*]} | grep -oE "sckey@[a-zA-Z0-9:_-]+" | cut -f2 -d@)" || return 0
     echo && echo starting serverchan...
-    curl -m 10 -sX POST "https://sc.ftqq.com/$sckey.send" -d "text=$(cat $formatsendinfo_file)" >/dev/null
+    curl -m 10 -sX POST "https://sct.ftqq.com/$sckey.send" -d "text=$(cat $formatsendinfo_file)" >/dev/null
 }
 
 function bark() {
