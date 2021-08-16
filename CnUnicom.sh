@@ -416,14 +416,14 @@ function serverchan() {
     # serverchan旧版通知消息: sckey@************
     echo ${all_parameter[*]} | grep -qE "sckey@[a-zA-Z0-9:_-]+" && sckey="$(echo ${all_parameter[*]} | grep -oE "sckey@[a-zA-Z0-9:_-]+" | cut -f2 -d@)" || return 0
     echo && echo starting serverchan...
-    curl -m 10 -sX POST "https://sct.ftqq.com/$sckey.send" -d "text=$(cat $formatsendinfo_file)" >/dev/null
+    curl -m 10 -sX POST "https://sctapi.ftqq.com/$sckey.send" -d "text=$(cat $formatsendinfo_file)" >/dev/null
 }
 
 function bark() {
     # bark通知消息: bark@************;bark推送不编码有换行推送不了，用tr空格替换了,推送效果极差
     echo ${all_parameter[*]} | grep -qE "bark@[a-zA-Z0-9:_-]+" && bark="$(echo ${all_parameter[*]} | grep -oE "bark@[a-zA-Z0-9:_-]+" | cut -f2 -d@)" || return 0
     echo && echo starting bark...
-    curl -m 10 -sX POST "https://sctapi.ftqq.com/$bark/$(cat $formatsendinfo_file | tr "\n" " ")" >/dev/null
+    curl -m 10 -sX POST "https://api.day.app/$bark/$(cat $formatsendinfo_file | tr "\n" " ")" >/dev/null
 }
 
 function main() {
